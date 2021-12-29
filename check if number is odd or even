@@ -1,0 +1,72 @@
+/*Documentation
+Name: Manish Panda
+Date: 28/07/2021 
+Description: check if number is odd or even
+Input: Enter the value of 'n' : -4
+Output: Enter the value of 'n' : -4
+        -4 is a negative even number.
+
+        Do you want to continue ?(y/n) : n
+Documentation*/
+
+#include<stdio.h>  //Standard input output header file
+int main()  //Main function
+{
+    int i,num,range=1,range1=1; //Integer variable declaration 
+    char ch; // character variable declaration
+
+    //For loop to calculate the range1<num<range i.e -2^20<num<2^20 
+    for(i=1;i<=20;i++)
+    {
+        range*=2; //For 2^20 
+    }
+    range1=range*(-1); //For -2^20
+
+    //Do while loop
+    do
+    {
+        printf("Enter the value of 'n' : "); //Ask the user for the value
+        scanf("%d",&num); //Scan the value
+        if(num<range && num>range1) //Check if the entered number is in the range
+        {
+            if(num!=0) //Check for non-zer0 number 
+            {
+                if(num%2==0) //Check for even number
+                {
+                    if(num>0) //Check for positive even number
+                    {
+                        printf("%d is a positive even number.\n",num); //Print positive even number
+                    }
+                    else  //Check for negative even number
+                    {
+                        printf("%d is a negative even number.\n",num); //Print negative even number
+                    }
+                }
+                else //Check for odd number
+                {
+                    if(num>0) //Check for positive odd number
+                    {
+                        printf("%d is a positive odd number.\n",num); //Print positive odd number
+                    }
+                    else //Check for negative odd number
+                    {
+                        printf("%d is a negative odd number.\n",num); //Print negative odd number
+                    }
+                }
+            }
+            else //Check for zero number 
+            {
+                printf("0 is neither odd nor even.\n"); //Print message for zero number
+            }
+        }
+        else //Check for out of range
+        {
+            printf("Error: Number is out of range.\n"); //Print error if number out of range
+        }
+        printf("\nDo you want to continue ?(y/n) : "); //Print continue option
+        getchar(); //Get the character option from standard input
+        scanf("%c",&ch); //Read the option
+    }while(ch=='y' || ch=='Y'); //Loop runs for only 'y' or 'Y'
+    return 0; //Return 
+}
+
