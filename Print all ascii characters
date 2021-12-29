@@ -1,0 +1,35 @@
+/*Documentation
+Name: Manish Panda
+Date: 29/07/2021 
+Description: Print all ascii characters
+Input: gcc Assignment_q4.c
+Output: Dec    Oct    Hex    Ascii
+        ---    ---    ---    -----
+        0      0      0      Not printable
+        1      1      1      Not printable
+        .      .      .      .
+        .      .      .      .
+        .      .      .      .
+Documentation*/
+
+#include<stdio.h> //Standard input output header file
+
+int main() //Main function
+{
+    char ch; //Character variable declaration 
+    printf("Dec\t\tOct\t\tHex\t\tAscii\n"); //Print the name of the column
+    printf("---\t\t---\t\t---\t\t-----\n"); //Print the 
+    for(int i=0;i<=127;i++) //Loop to print each ascii value
+    {
+        ch=i; //character initialization
+        if(ch<33 || ch==127) //Check for non-printable characters
+        {
+            printf("%d\t\t%o\t\t%x\t\tNot Printable\n",ch,ch,ch); //Print non-printable characters
+        }
+        else //Check for printable characters
+        {
+            printf("%d\t\t%o\t\t%x\t\t%c\n",ch,ch,ch,ch); //Print the printable characters
+        }
+    }
+    return 0; //Return 
+}
