@@ -1,0 +1,66 @@
+/*Documentation
+Name: Manish Panda
+Date: 28/07/2021 
+Description: Check if a number is perfect or not
+Input: Enter a number : 6
+Output: Enter a number : 6
+        Yes, entered number 6 is a perfect number.
+
+        Do you want to continue ?(y/n) : n
+Documentation*/
+
+#include<stdio.h> //Standard input output header file
+
+int main() //Main function
+{
+    int num,mod,range=1; //Interger variable declaration and initialization
+    char ch; //Character variable declaration
+    //Loop to calculate num<range i.e num<2^20
+    for(int i=0;i<=20;i++) 
+    {
+        range*=2; //For 2^20
+    }
+    //Do while loop
+    do
+    {
+        int sum=0; //Integer declaration and initialization
+        printf("Enter a number : "); //Ask the user to enter a number
+        scanf("%d",&num); //Read the number
+        if(num<range) //Check if number is in range
+        {
+            if(num>0) //Check for positive number
+            {
+                for(int i=1;i<num;i++) //For divisor
+                {
+                    mod=num%i; //Remainder
+                    if(mod==0) //Check modulus condition
+                    {
+                        sum+=i; //calculate sum of divisors
+                    }
+                }
+                if(sum==num) //Check if sum of divisor is same as the original number
+                {
+                    printf("Yes, entered number %d is a perfect number.\n",num); //Print result
+                }
+                else //Check if sum of divisor is not same as the original number
+                {
+                    printf("No, entered number %d is not a perfect number.\n",num); //Print result
+                }
+            }
+            else //Check for negative number
+            {
+             printf("Error : Invalid input, enter only positive number.\n"); //Print error
+            }
+        }
+        else //Check if number is not in range 
+        {
+         //Print error
+         printf("Error : Number out of range, number should be less than 2^20 but greater than 0 i.e 0<num<2^20.\n");
+        }
+        printf("\nDo you want to continue ?(y/n) : "); //Print continue option
+        getchar(); //Get character option from standard input
+        scanf("%c",&ch); //Read the option
+    }while(ch=='y' || ch=='Y'); //Run loop if true
+
+    return 0; //Return
+}
