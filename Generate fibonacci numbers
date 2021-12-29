@@ -1,0 +1,76 @@
+/*Documentation
+Name: Manish Panda
+Date: 28/07/21 
+Description: Generate fibonacci numbers
+Input:  Enter a number : 8
+Output: Enter a number : 8
+        0, 1, 1, 2, 3, 5, 8
+
+        Do you want to continue ?(y/n) : n
+Documentation*/
+
+
+#include<stdio.h> //Standard input output header file 
+#include<stdlib.h> //Standard library header file for abs function
+int main() //Main function
+{
+    int i,range=1,range1; //Integer variable declaration and initialization
+    char ch; //Character declaration
+    //Loop to calculate the range1<num<range i.e -2^20<num<2^20
+    for(i=0;i<=20;i++) 
+    {
+        range*=2; //For 2^20
+    }
+    range1=range*(-1); //For -2^20
+
+    do
+    {
+        int x=0,y=1,z,num; //Integer variable declaration and initialization
+        printf("Enter a number: "); //Ask the user to enter a number
+        scanf("%d",&num); //Read the number from the user
+       
+        if(num<range && num>range1)  //Check if number is in the range
+        {
+            if(num>=0) //Check for positive number
+            {
+                while(x<=num) //Positive fibonacii series
+                {
+                    if (x!=0) //Condition for printing comma
+                    {
+                        printf(", "); //Print comma
+                    }
+                    printf("%d",x); //Print output
+                    z=x+y; //Third value
+                    x=y;  //swap first with second
+                    y=z;  //Swap second with third
+                }
+            }
+            else  //Check for negative Number
+            {
+                while(x<=num*(-1) && abs(x)<=num*(-1)) //Negative fibonacii series
+                {
+                    
+                    if (x!=0) //Condition for printing comma
+                    {
+                        printf(", "); //Print comma
+                    }
+                    printf("%d",x); //Print output
+                    z=x-y; //Third value
+                    x=y;  //swap first with second
+                    y=z;  //Swap second with third
+                }
+            }
+        }
+        else //Check if number is out of range
+        {
+            printf("Error : Number out of range, please enter the value -2^20<N<2^20\n"); //Print error 
+
+        }
+        printf("\n"); //Print a new line afte the result for better clarity
+        printf("\nDo you want to continue ?(y/n) : "); //Print the continue option
+        getchar(); //Get character option from standard input
+        scanf("%c",&ch); //Read the input option 
+    }while(ch=='y' || ch=='Y'); //Run the loop if true
+
+    return 0; //Return
+}
